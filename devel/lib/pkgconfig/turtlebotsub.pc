@@ -1,0 +1,8 @@
+prefix=/home/thabet/catkin_ws/devel
+
+Name: turtlebotsub
+Description: Description of turtlebotsub
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

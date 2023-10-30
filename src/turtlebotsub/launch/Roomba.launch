@@ -1,0 +1,10 @@
+<launch>
+  <node name="turtlesim" pkg="turtlesim" type="turtlesim_node" output="screen" />
+  <node name="Spawn_Helper" pkg="turtlebotsub" type="spawnerhelper.py" />
+  <node name="Roombamode" pkg="turtlebotsub" type="Roombamode.py" />
+  <node name="RoombaHelper1" pkg="turtlebotsub" type="roombahelper1.py" />
+  <node name="RoombaHelper2" pkg="turtlebotsub" type="roombahelper2.py" />
+  <node name="RoombaHelper3" pkg="turtlebotsub" type="roombahelper3.py" />
+  <node name="RoombaHelper4" pkg="turtlebotsub" type="roombahelper4.py" />
+  <node name="RoombaHelper5" pkg="turtlebotsub" type="roombahelper5.py" />
+</launch>

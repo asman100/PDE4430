@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/thabet/catkin_ws/devel/setup.sh
