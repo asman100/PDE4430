@@ -5,13 +5,14 @@ from turtlesim.msg import Pose
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Int32
 from time import sleep
+import sys
 flag = True
 start = True
-seq1 = [(0.5, 0.5),(10.5,0.5),(10.5,1.5),(0.5,1.5),(0,0)]
-seq2 = [(0.5, 3),(0.5,2.5),(10.5,2.5),(10.5,3.5),(0.5,3.5),(0.5,4.5),(10.5,4.5),(0,0)]
-seq3 = [(0.5, 5.5),(10.5,5.5),(0,0)]
-seq4 = [(0.5, 8),(0.5,8.5),(10.5,8.5),(10.5,7.5),(0.5,7.5),(0.5,6.5),(10.5,6.5),(0,0)]
-seq5 = [(0.5, 10.5),(10.5,10.5),(10.5,9.5),(0.5,9.5),(0,0)]
+seq1 = [(0.5, 0.5),(10.5,0.5),(10.5,1.5),(0.5,1.5),(0.5,0.5)]
+seq2 = [(0.5, 3),(0.5,2.5),(10.5,2.5),(10.5,3.5),(0.5,3.5),(0.5,4.5),(10.5,4.5)]
+seq3 = [(0.5, 5.5),(10.5,5.5),(5.5,5.5)]
+seq4 = [(0.5, 8),(0.5,8.5),(10.5,8.5),(10.5,7.5),(0.5,7.5),(0.5,6.5),(10.5,6.5)]
+seq5 = [(0.5, 10.5),(10.5,10.5),(10.5,9.5),(0.5,9.5),(0.5,10.5)]
 Mother_seq = (seq1,seq2,seq3,seq4,seq5)
 myseq = []
 actseq = []
@@ -39,10 +40,13 @@ def posedata(data, Vacuum5):
     location = Pose()
     location = data
     if flag == True:
-        target = myseq.pop(0)
-        print(target)
-        flag = False
-        rotation = False
+        if myseq:  # checks if myseq is not empty
+            target = myseq.pop(0)
+            print(target)
+            flag = False
+            rotation = False
+        else:
+            print("myseq is empty, cannot pop element")
     
         
     
@@ -77,7 +81,8 @@ def posedata(data, Vacuum5):
                     Vacuum5.publish(Command)
                     sleep(2)
                     flag = True
-                    exit()
+                    if(len(myseq) == 0):
+                        sys.exit()
                 else:
                     Command.linear.x = distance_to_goal
                     Vacuum5.publish(Command)

@@ -1,0 +1,8 @@
+<launch>
+  <node name="turtlesim" pkg="turtlesim" type="turtlesim_node" output="screen" />
+    <node name="collisionavoid" pkg="turtlebotsub" type="collisionavoid.py" />
+
+
+
+ 
+</launch>
