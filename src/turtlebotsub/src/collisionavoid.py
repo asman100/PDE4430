@@ -25,7 +25,7 @@ def autogo():
 
     rospy.Subscriber('/turtle1/pose', Pose, posedata, collisionavoid)
 
-    rate = rospy.Rate(1000)  # 10 Hz
+    rate = rospy.Rate(1000)  
     while not rospy.is_shutdown():
         rate.sleep()
 
