@@ -1,5 +1,5 @@
 <launch>
-  <node name="turtlesim" pkg="turtlesim" type="turtlesim_node"  />
+  <node name="turtlesim" pkg="turtlesim" type="turtlesim_node"  /> 
     <node name="AutoGoal" pkg="turtlebotsub" type="AutoGoal.py" output="screen" />
 
 
