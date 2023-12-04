@@ -1,10 +1,24 @@
 import rospy
-from std_msgs.msg import Float32, Int16
+from std_msgs.msg import Float32, Int16, Float32MultiArray
 import numpy as np
 
 lasttime = 0
 lastdist = 0
 speed = 0
+PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+radius = 2.59
+motor1speed = 0
+motor2speed = 0
+pwm = 0
+goal_speed = 0
+kp = 0.5  # Proportional constant
+ki = 0.2  # Integral constant
+kd = 0.1  # Derivative constant
+last_error = 0
+integral = 0
+# Motor control limits
+min_speed = 0  # Minimum motor speed
+max_speed = 255  # Maximum motor speed
 
 
 class KalmanFilter:
@@ -33,6 +47,40 @@ class KalmanFilter:
         return self.state
 
 
+def calculate_pid(error):
+    global integral, last_error
+
+    # Proportional term
+    p = kp * error
+
+    # Integral term
+    integral += error
+    i = ki * integral
+
+    # Derivative term
+    derivative = error - last_error
+    d = kd * derivative
+
+    # Calculate the PID output
+    output = p + i + d
+
+    # Update the error and return the PID output
+    last_error = error
+    return output
+
+
+def control_motor(pid_output):
+    # Apply motor control limits
+    speed = int(pid_output)
+    if goal_speed == 0:
+        speed = 0
+    elif goal_speed > speed:
+        speed = min_speed
+    elif goal_speed < speed:
+        speed = max_speed
+    return speed
+
+
 initial_state = 0
 initial_estimate_error = 1
 process_variance = 0.1
@@ -43,12 +91,11 @@ kf = KalmanFilter(
 
 
 def rpm(motor1):
-    print(motor1.data)
-    pass
-
-
-def rpm0(motor2):
-    print(motor2.data)
+    global motor1speed
+    global motor2speed
+    motor1speed = motor1.data[0] * 2 * radius * PI / 60
+    motor2speed = motor1.data[1] * 2 * radius * PI / 60
+    motor(pub)
     pass
 
 
@@ -56,21 +103,37 @@ def ultrasonic(dist):
     global lasttime, lastdist, speed
     currdist = kf.update(dist.data)
     now = rospy.get_rostime()
-    speed = (currdist - lastdist) / (now.secs - lasttime)
-    lasttime = now.secs
+
+    speed = (currdist - lastdist) / ((now.secs - lasttime) / 1e9)
+    speed = int(-speed)
+
+    lasttime = now.nsecs
     lastdist = dist.data
 
     pass
 
 
+def motor(pub):
+    global motor1speed, motor2speed, speed, pwm, goal_speed
+    carspeed = (motor1speed + motor2speed) / 2
+    goal_speed = speed + carspeed
+    pid_output = calculate_pid(speed)
+    pwm = control_motor(pid_output)
+
+    print(pwm)
+
+    pub.publish(pwm)
+
+
 def publisher():
     rospy.init_node("publisher_node", anonymous=True)
-    rospy.Subscriber("rpm1", Float32, rpm)
-    rospy.Subscriber("rpm2", Float32, rpm0)
-    rospy.Subscriber("distance", Float32, ultrasonic)
-    pub = rospy.Publisher("output_topic", Int16, queue_size=10)
-    rate = rospy.Rate(60)  # 10 Hz
+    rospy.Subscriber("rpm1", Float32MultiArray, rpm)
 
+    rospy.Subscriber("distance", Float32, ultrasonic)
+    global pub
+    pub = rospy.Publisher("output_topic", Int16, queue_size=10)
+    rate = rospy.Rate(10)  # 10 Hz
+    motor(pub)
     while not rospy.is_shutdown():
         rate.sleep()
 
