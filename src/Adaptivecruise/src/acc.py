@@ -19,6 +19,7 @@ integral = 0
 # Motor control limits
 min_speed = 0  # Minimum motor speed
 max_speed = 255  # Maximum motor speed
+global pub
 
 
 class KalmanFilter:
@@ -91,6 +92,7 @@ kf = KalmanFilter(
 
 
 def rpm(motor1):
+    global pub
     global motor1speed
     global motor2speed
     motor1speed = motor1.data[0] * 2 * radius * PI / 60
@@ -117,12 +119,12 @@ def motor(pub):
     global motor1speed, motor2speed, speed, pwm, goal_speed
     carspeed = (motor1speed + motor2speed) / 2
     goal_speed = speed + carspeed
+    error = goal_speed - carspeed
     pid_output = calculate_pid(speed)
     pwm = control_motor(pid_output)
-
-    print(pwm)
-
-    pub.publish(pwm)
+    error = int(error)
+    pub.publish(error)
+    print(error)
 
 
 def publisher():
@@ -131,7 +133,8 @@ def publisher():
 
     rospy.Subscriber("distance", Float32, ultrasonic)
     global pub
-    pub = rospy.Publisher("output_topic", Int16, queue_size=10)
+    pub = rospy.Publisher("motor", Int16, queue_size=10)
+
     rate = rospy.Rate(10)  # 10 Hz
     motor(pub)
     while not rospy.is_shutdown():
