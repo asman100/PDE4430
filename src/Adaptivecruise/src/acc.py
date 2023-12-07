@@ -124,7 +124,6 @@ def motor(pub):
     pwm = control_motor(pid_output)
     error = int(error)
     pub.publish(error)
-    print(error)
 
 
 def publisher():
