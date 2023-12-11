@@ -1,6 +1,8 @@
+#!/usr/bin/env python
 import rospy
 from std_msgs.msg import Float32, Int16, Float32MultiArray
 import numpy as np
+import time
 
 lasttime = 0
 lastdist = 0
@@ -15,7 +17,7 @@ kp = 0.5  # Proportional constant
 ki = 0.2  # Integral constant
 kd = 0.1  # Derivative constant
 last_error = 0
-integral = 0
+flag = 0
 # Motor control limits
 min_speed = 0  # Minimum motor speed
 max_speed = 255  # Maximum motor speed
@@ -48,44 +50,30 @@ class KalmanFilter:
         return self.state
 
 
-def calculate_pid(error):
-    global integral, last_error
+class Car:
+    def __init__(self, speed):
+        self.speed = speed
 
-    # Proportional term
-    p = kp * error
+    def update_speed(self, object_speed, proportional_gain=0.5):
+        # Calculate the error (difference between desired speed and current speed)
+        error = object_speed - self.speed
 
-    # Integral term
-    integral += error
-    i = ki * integral
+        # Adjust the car's speed based on proportional control
+        self.speed += proportional_gain * error
 
-    # Derivative term
-    derivative = error - last_error
-    d = kd * derivative
+        # Limit the speed to a reasonable range (optional)
 
-    # Calculate the PID output
-    output = p + i + d
+        # Calculate PWM signal based on the adjusted speed
+        pwm_signal = int(255 - (self.speed * 2.55))  # Scale speed to 0-255 range
 
-    # Update the error and return the PID output
-    last_error = error
-    return output
+        return pwm_signal
 
 
-def control_motor(pid_output):
-    # Apply motor control limits
-    speed = int(pid_output)
-    if goal_speed == 0:
-        speed = 0
-    elif goal_speed > speed:
-        speed = min_speed
-    elif goal_speed < speed:
-        speed = max_speed
-    return speed
-
-
-initial_state = 0
-initial_estimate_error = 1
-process_variance = 0.1
-measurement_variance = 1
+my_car = Car(0)
+initial_state = 0.0
+initial_estimate_error = 1.0
+process_variance = 2
+measurement_variance = 2
 kf = KalmanFilter(
     initial_state, initial_estimate_error, process_variance, measurement_variance
 )
@@ -97,33 +85,40 @@ def rpm(motor1):
     global motor2speed
     motor1speed = motor1.data[0] * 2 * radius * PI / 60
     motor2speed = motor1.data[1] * 2 * radius * PI / 60
+    my_car.speed = (motor1speed + motor2speed) / 2
     motor(pub)
     pass
 
 
 def ultrasonic(dist):
-    global lasttime, lastdist, speed
-    currdist = kf.update(dist.data)
-    now = rospy.get_rostime()
+    global lasttime, lastdist, speed, flag, initial_state, pwm, motor1speed
+    if flag == 0:
+        lastdist = dist.data
+        lasttime = time.time()
+        flag = 1
+    else:
+        currdist = kf.update(dist.data)
 
-    speed = (currdist - lastdist) / ((now.secs - lasttime) / 1e9)
-    speed = int(-speed)
+        current_time = time.time()
+        currdist = currdist // 1
+        speed = (currdist - lastdist) / ((current_time - lasttime))
+        speed = int(speed)
+        print("speed: " + str(speed) + "cm/s")
+        print("\n dist: " + str(currdist) + "cm")
+        print("\n pwm: " + str(pwm))
+        print("\n motor1speed: " + str(motor1speed))
+        lasttime = current_time
 
-    lasttime = now.nsecs
-    lastdist = dist.data
-
-    pass
+        lastdist = dist.data // 1
 
 
 def motor(pub):
     global motor1speed, motor2speed, speed, pwm, goal_speed
     carspeed = (motor1speed + motor2speed) / 2
     goal_speed = speed + carspeed
-    error = goal_speed - carspeed
-    pid_output = calculate_pid(speed)
-    pwm = control_motor(pid_output)
-    error = int(error)
-    pub.publish(error)
+    pwm = my_car.update_speed(goal_speed)
+    # print(pwm)
+    pub.publish(pwm)
 
 
 def publisher():
@@ -138,6 +133,7 @@ def publisher():
     motor(pub)
     while not rospy.is_shutdown():
         rate.sleep()
+        rospy.spin()
 
 
 if __name__ == "__main__":
