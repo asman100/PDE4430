@@ -6,6 +6,7 @@ import time
 
 lasttime = 0
 lastdist = 0
+currdist = 0
 speed = 0
 PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286
 radius = 2.59
@@ -13,14 +14,12 @@ motor1speed = 0
 motor2speed = 0
 pwm = 0
 goal_speed = 0
-kp = 0.5  # Proportional constant
-ki = 0.2  # Integral constant
-kd = 0.1  # Derivative constant
+
 last_error = 0
 flag = 0
-# Motor control limits
-min_speed = 0  # Minimum motor speed
-max_speed = 255  # Maximum motor speed
+
+min_speed = 0
+max_speed = 255
 global pub
 
 
@@ -51,29 +50,28 @@ class KalmanFilter:
 
 
 class Car:
-    def __init__(self, speed):
+    def __init__(self, speed=0):
         self.speed = speed
 
-    def update_speed(self, object_speed, proportional_gain=0.5):
-        # Calculate the error (difference between desired speed and current speed)
+    def update_speed(self, object_speed, proportional_gain=0.1):
         error = object_speed - self.speed
+        if error <= 0 or int(currdist) < 10:
+            pwm_signal = 255
+        else:
+            control_signal = proportional_gain * error
 
-        # Adjust the car's speed based on proportional control
-        self.speed += proportional_gain * error
+            self.speed += control_signal
 
-        # Limit the speed to a reasonable range (optional)
-
-        # Calculate PWM signal based on the adjusted speed
-        pwm_signal = int(255 - (self.speed * 2.55))  # Scale speed to 0-255 range
+            pwm_signal = max(50, min(int(120 - (self.speed * 2.55)), 120))
 
         return pwm_signal
 
 
 my_car = Car(0)
-initial_state = 0.0
+initial_state = 10
 initial_estimate_error = 1.0
-process_variance = 2
-measurement_variance = 2
+process_variance = 10
+measurement_variance = 10
 kf = KalmanFilter(
     initial_state, initial_estimate_error, process_variance, measurement_variance
 )
@@ -91,9 +89,9 @@ def rpm(motor1):
 
 
 def ultrasonic(dist):
-    global lasttime, lastdist, speed, flag, initial_state, pwm, motor1speed
+    global lasttime, lastdist, speed, flag, initial_state, pwm, motor1speed, currdist
     if flag == 0:
-        lastdist = dist.data
+        lastdist = kf.update(dist.data)
         lasttime = time.time()
         flag = 1
     else:
@@ -129,11 +127,10 @@ def publisher():
     global pub
     pub = rospy.Publisher("motor", Int16, queue_size=10)
 
-    rate = rospy.Rate(10)  # 10 Hz
+    rate = rospy.Rate(40)
     motor(pub)
     while not rospy.is_shutdown():
         rate.sleep()
-        rospy.spin()
 
 
 if __name__ == "__main__":
