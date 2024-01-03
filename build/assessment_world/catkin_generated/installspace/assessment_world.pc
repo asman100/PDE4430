@@ -1,0 +1,8 @@
+prefix=/home/thabet/catkin_ws/install
+
+Name: assessment_world
+Description: Description of assessment_world
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

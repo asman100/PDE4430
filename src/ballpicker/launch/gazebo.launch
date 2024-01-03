@@ -1,0 +1,44 @@
+
+NOTE TO SELF MUST ADD JOINTS TO CONFIG and fix robot state publisher for rviz
+following that we implement teleop control and then we can move on to the next step
+which is slam and navigation
+
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find assessment_world)/worlds/assessment.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+  <param name="my_robot_description" textfile="$(find ballpicker)/urdf/ballpicker.urdf"/>
+    
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+      <remap from="robot_description" to="my_robot_description" />
+      <remap from="joint_states" to="different_joint_states" />
+  </node>
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find ballpicker)/urdf/ballpicker.urdf -urdf -model ballpicker -R 1.5 -x 0.0 -y 0 -z 0.5 -Y 1.57"
+    output="screen" />
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+  <rosparam file ="$(find ballpicker)/config/mybot_control.yaml"
+command="load"/>
+<node name= "controller_spawner" pkg= "controller_manager" type="spawner" respawn="false"
+output="screen" args="joint1_position_controller joint2_position_controller joint_state_controller  "/>
+
+    
+</launch>
+
+

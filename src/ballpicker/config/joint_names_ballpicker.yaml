@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'LF_Wheel_Cont', 'LM_Wheel_Cont', 'LB_Wheel_Cont', 'RF_Wheel_Cont', 'RM_Wheel_Cont', 'RB_Wheel_Cont', 'Claw_Right_J', 'Claw_Left_J', ]

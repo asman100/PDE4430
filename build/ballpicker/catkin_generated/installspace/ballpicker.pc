@@ -1,0 +1,8 @@
+prefix=/home/thabet/catkin_ws/install
+
+Name: ballpicker
+Description: Description of ballpicker
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp rospy std_msgs
