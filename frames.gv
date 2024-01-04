@@ -1,0 +1,18 @@
+digraph G {
+"odom" -> "base_link"[label=" Broadcaster: /gazebo\nAverage rate: 100.2\nBuffer length: 4.99\nMost recent transform: 401.376\nOldest transform: 396.386\n"];
+"base_footprint" -> "Car_link"[label=" Broadcaster: /rob_st_pub\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "base_footprint"[label=" Broadcaster: /tf_footprint_base\nAverage rate: 25.202\nBuffer length: 4.96\nMost recent transform: 401.418\nOldest transform: 396.458\n"];
+"Car_link" -> "hokuyo_link"[label=" Broadcaster: /rob_st_pub\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"Car_link" -> "Claw_Left"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "Claw_Right"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "LB_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "LF_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "LM_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "RB_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "RF_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+"Car_link" -> "RM_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.201\nBuffer length: 4.98\nMost recent transform: 401.379\nOldest transform: 396.399\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 401.387"[ shape=plaintext ] ;
+}->"odom";
+}
