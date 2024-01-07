@@ -109,6 +109,7 @@
     <axis
       xyz="1 0 0" />
   </joint>
+  <!-- 
   <link
     name="LM_Wheel">
     <inertial>
@@ -164,8 +165,8 @@
     <mimic
       joint="LF_Wheel_Cont"
       multiplier="1"
-      offset="0" />
-  </joint>
+      offset="0" /> 
+  </joint>-->
   <link
     name="LB_Wheel">
     <inertial>
@@ -276,6 +277,7 @@
     <axis
       xyz="1 0 0" />
   </joint>
+  <!-- 
   <link
     name="RM_Wheel">
     <inertial>
@@ -332,7 +334,7 @@
       joint="RF_Wheel_Cont"
       multiplier="1"
       offset="0" />
-  </joint>
+  </joint> -->
   <link
     name="RB_Wheel">
     <inertial>
@@ -390,6 +392,50 @@
       multiplier="1"
       offset="0" />
   </joint>
+  <gazebo reference="RB_Wheel">
+            <mu1>1.0</mu1>
+            <mu2>0.5</mu2>
+            <kp>10000000.0</kp>
+            <kd>10.0</kd>
+            <fdir1>0 0.0 1.0</fdir1>
+          <dynamics damping="0.7" friction="100.0" />  
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+            
+  </gazebo>
+  <gazebo reference="RF_Wheel">
+            <mu1>1.0</mu1>
+            <mu2>0.5</mu2>
+            <kp>10000000.0</kp>
+            <kd>10.0</kd>
+            <fdir1>0 0.0 1.0</fdir1>
+          <dynamics damping="0.7" friction="10.0" />
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+            
+  </gazebo>
+  <gazebo reference="LB_Wheel">
+            <mu1>1.0</mu1>
+            <mu2>0.5</mu2>
+            <kp>10000000.0</kp>
+            <kd>10.0</kd>
+            <fdir1>0 0.0 1.0</fdir1>
+          <dynamics damping="0.7" friction="100.0" />  
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+            
+  </gazebo>
+  <gazebo reference="LF_Wheel">
+            <mu1>1.0</mu1>
+            <mu2>0.5</mu2>
+            <kp>10000000.0</kp>
+            <kd>10.0</kd>
+            <fdir1>0 0.0 1.0</fdir1>
+          <dynamics damping="0.7" friction="100.0" /> 
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+            
+  </gazebo>
   <link
     name="Claw_Right">
     <inertial>
@@ -571,6 +617,7 @@
       </plugin>
     </sensor>
   </gazebo>
+
   <gazebo>
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
       <updateRate>100.0</updateRate>
@@ -582,11 +629,11 @@
       <wheelSeparation>0.210</wheelSeparation>
       <wheelDiameter>0.065</wheelDiameter>
       <robotBaseFrame>base_link</robotBaseFrame>
-      <torque>20</torque>
+      <torque>40</torque>
       <topicName>cmd_vel</topicName>
       <broadcastTF>true</broadcastTF>
     </plugin>
-  </gazebo>
+  </gazebo> 
   <transmission name="link_1_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="Claw_Left_J">
@@ -610,49 +657,48 @@
     <transmission name="link_3_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="LF_Wheel_Cont">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="link_3_motor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface> 
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
     <transmission name="link_4_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="LB_Wheel_Cont">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="link_4_motor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface> 
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
     <transmission name="link_5_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="RF_Wheel_Cont">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="link_5_motor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface> 
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
     <transmission name="link_6_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="RB_Wheel_Cont">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="link_6_motor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface> 
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  
- <gazebo>
-  <plugin name="control"
-filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
-  </plugin>
- </gazebo>
+  <gazebo>
+    <plugin name="control"
+  filename="libgazebo_ros_control.so">
+        <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
   
 </robot>

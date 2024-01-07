@@ -34,7 +34,7 @@ which is slam and navigation-->
   <rosparam file ="$(find ballpicker)/config/mybot_control.yaml"
 command="load"/>
 <node name= "controller_spawner" pkg= "controller_manager" type="spawner" respawn="false"
-output="screen" args="joint1_position_controller joint2_position_controller joint_state_controller  "/>.
+output="screen" args="velocity_controller joint1_position_controller joint2_position_controller joint_state_controller  "/>.
 <node type="rviz" name="rviz" pkg="rviz" args="-d $(find ballpicker)/rviz/ballpick.rviz" />
 
 

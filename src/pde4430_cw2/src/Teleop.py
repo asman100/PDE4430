@@ -43,13 +43,13 @@ if __name__ == "__main__":
 
     rospy.init_node("teleop_twist_keyboard")
 
-    speed = rospy.get_param("~speed", 0.5)
+    speed = rospy.get_param("~speed", 3.0)
     turn = rospy.get_param("~turn", 3.0)
     x = 0
     th = 0
     status = 0
 
-    pub = rospy.Publisher("/cmd_vel", Twist, queue_size=1)
+    pub = rospy.Publisher("/velocity_controller/cmd_vel", Twist, queue_size=1)
     increase_pub = rospy.Publisher(
         "/joint1_position_controller/command", Float64, queue_size=1
     )
