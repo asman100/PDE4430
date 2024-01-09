@@ -358,6 +358,77 @@
     <child link="frictionless_sphere"/>
   </joint> 
   -->
+  <joint name="kinnect_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 -0.078 0.115" rpy="0 0 -1.57"/>
+    <parent link="Car_link"/>
+    <child link="kinnect_link"/>
+  </joint>
+
+  <!-- kinnect -->
+  <link name="kinnect_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <gazebo reference="kinnect_link">
+  <sensor name="kinnect_camera" type="depth">
+    <update_rate>20</update_rate>
+    <kinnect>
+      <horizontal_fov>1.047198</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>6</far>
+      </clip>
+    </kinnect>
+    <plugin name="kinnect_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <kinnectName>kinnect_ir</kinnectName>
+      <imageTopicName>/kinnect/color/image_raw</imageTopicName>
+      <kinnectInfoTopicName>/kinnect/color/camera_info</kinnectInfoTopicName>
+      <depthImageTopicName>/kinnect/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/kinnect/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/kinnect/depth/points</pointCloudTopicName>
+      <frameName>kinnect_link</frameName>
+      <pointCloudCutoff>0.5</pointCloudCutoff>
+      <pointCloudCutoffMax>6.0</pointCloudCutoffMax>
+      <distortionK1>0.00000001</distortionK1>
+      <distortionK2>0.00000001</distortionK2>
+      <distortionK3>0.00000001</distortionK3>
+      <distortionT1>0.00000001</distortionT1>
+      <distortionT2>0.00000001</distortionT2>
+      <CxPrime>0</CxPrime>
+      <Cx>0</Cx>
+      <Cy>0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+  </sensor>
+</gazebo>
   <gazebo>
     <plugin name="control"
   filename="libgazebo_ros_control.so">
