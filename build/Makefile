@@ -2377,19 +2377,6 @@ controller_manager_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
 .PHONY : controller_manager_msgs_generate_messages_cpp/fast
 
-#=============================================================================
-# Target rules for targets named ballpicker_xacro_generated_to_devel_space_
-
-# Build rule for target.
-ballpicker_xacro_generated_to_devel_space_: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ballpicker_xacro_generated_to_devel_space_
-.PHONY : ballpicker_xacro_generated_to_devel_space_
-
-# fast build rule for target.
-ballpicker_xacro_generated_to_devel_space_/fast:
-	$(MAKE) -f ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build.make ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build
-.PHONY : ballpicker_xacro_generated_to_devel_space_/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2573,7 +2560,6 @@ help:
 	@echo "... controller_manager_msgs_generate_messages_lisp"
 	@echo "... controller_manager_msgs_generate_messages_eus"
 	@echo "... controller_manager_msgs_generate_messages_cpp"
-	@echo "... ballpicker_xacro_generated_to_devel_space_"
 .PHONY : help
 
 

@@ -1,0 +1,13 @@
+digraph G {
+"base_footprint" -> "Car_link"[label=" Broadcaster: /rob_st_pub\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "base_footprint"[label=" Broadcaster: /gazebo\nAverage rate: 75.075\nBuffer length: 4.995\nMost recent transform: 431.716\nOldest transform: 426.721\n"];
+"Car_link" -> "hokuyo_link"[label=" Broadcaster: /rob_st_pub\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"Car_link" -> "Claw_Left"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.202\nBuffer length: 4.96\nMost recent transform: 431.681\nOldest transform: 426.721\n"];
+"Car_link" -> "Claw_Right"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.202\nBuffer length: 4.96\nMost recent transform: 431.681\nOldest transform: 426.721\n"];
+"Car_link" -> "LF_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.202\nBuffer length: 4.96\nMost recent transform: 431.681\nOldest transform: 426.721\n"];
+"Car_link" -> "RF_Wheel"[label=" Broadcaster: /rob_st_pub\nAverage rate: 50.202\nBuffer length: 4.96\nMost recent transform: 431.681\nOldest transform: 426.721\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 431.704"[ shape=plaintext ] ;
+}->"base_link";
+}

@@ -1,0 +1,14 @@
+{
+    "configuration": "default",
+    "documentId": "71190aca7e4d361823f135cd",
+    "documentMicroversion": "cbe12910c96604d930662c8c",
+    "documentVersion": "4d60ec2f9bdbb42cb69f9eea",
+    "elementId": "34ffa46cf0f8b88e3fc4e3ee",
+    "fullConfiguration": "default",
+    "id": "MVRUH95eoHeqG4Btm",
+    "isStandardContent": false,
+    "name": "Car_Link <1>",
+    "partId": "JFD",
+    "suppressed": false,
+    "type": "Part"
+}

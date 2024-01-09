@@ -29,9 +29,9 @@ joint2_position_controller:
 
 velocity_controller:
   type: "diff_drive_controller/DiffDriveController"
-  left_wheel: ['LF_Wheel_Cont', 'LB_Wheel_Cont']
-  right_wheel: ['RF_Wheel_Cont', 'RB_Wheel_Cont']
-  publish_rate: 50
+  left_wheel: 'LF_Wheel_Cont'
+  right_wheel: 'RF_Wheel_Cont'
+  publish_rate: 10
   pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   cmd_vel_timeout: 10.0
@@ -43,8 +43,8 @@ velocity_controller:
   # Odometry fused with IMU is published by robot_localization, so
   # no need to publish a TF based on encoders alone.
   enable_odom_tf: false
-  wheel_separation : 0.210
-  wheel_radius : 0.065
+  wheel_separation : 0.16
+  wheel_radius : 0.066
   # Wheel separation and radius multipliers
   wheel_separation_multiplier: 1.0 # default: 1.0
   wheel_radius_multiplier    : 1.0 # default: 1.0
@@ -60,6 +60,6 @@ velocity_controller:
   angular:
     z:
       has_velocity_limits    : true
-      max_velocity           : 2.0   # rad/s
+      max_velocity           : 1.0   # rad/s
       has_acceleration_limits: true
       max_acceleration       : 6.0   # rad/s^2

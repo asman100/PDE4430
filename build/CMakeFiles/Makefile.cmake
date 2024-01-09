@@ -16,7 +16,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "MYROBOT_control/catkin_generated/package.cmake"
   "assessment_world/catkin_generated/ordered_paths.cmake"
   "assessment_world/catkin_generated/package.cmake"
-  "ballpicker/catkin_generated/ordered_paths.cmake"
   "ballpicker/catkin_generated/package.cmake"
   "catkin/catkin_generated/version/package.cmake"
   "catkin_generated/installspace/_setup_util.py"
@@ -354,9 +353,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/noetic/share/turtlebot3_msgs/cmake/turtlebot3_msgsConfig.cmake"
   "/opt/ros/noetic/share/urdf/cmake/urdfConfig-version.cmake"
   "/opt/ros/noetic/share/urdf/cmake/urdfConfig.cmake"
-  "/opt/ros/noetic/share/xacro/cmake/xacro-extras.cmake"
-  "/opt/ros/noetic/share/xacro/cmake/xacroConfig-version.cmake"
-  "/opt/ros/noetic/share/xacro/cmake/xacroConfig.cmake"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/xmlrpcpp-extras.cmake"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/xmlrpcppConfig-version.cmake"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/xmlrpcppConfig.cmake"
@@ -767,5 +763,4 @@ set(CMAKE_DEPEND_INFO_FILES
   "MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/DependInfo.cmake"
-  "ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/DependInfo.cmake"
   )

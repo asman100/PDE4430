@@ -210,7 +210,7 @@ assessment_world/clean:
 # Directory level rules for directory ballpicker
 
 # Recursive "all" directory target.
-ballpicker/all: ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/all
+ballpicker/all:
 
 .PHONY : ballpicker/all
 
@@ -220,7 +220,7 @@ ballpicker/preinstall:
 .PHONY : ballpicker/preinstall
 
 # Recursive "clean" directory target.
-ballpicker/clean: ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/clean
+ballpicker/clean:
 
 .PHONY : ballpicker/clean
 
@@ -5653,33 +5653,6 @@ controller_manager_msgs_generate_messages_cpp: MYROBOT_control/CMakeFiles/contro
 MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/clean:
 	$(MAKE) -f MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/clean
 .PHONY : MYROBOT_control/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/clean
-
-#=============================================================================
-# Target rules for target ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir
-
-# All Build rule for target.
-ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/all:
-	$(MAKE) -f ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build.make ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/depend
-	$(MAKE) -f ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build.make ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/thabet/catkin_ws/build/CMakeFiles --progress-num= "Built target ballpicker_xacro_generated_to_devel_space_"
-.PHONY : ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/all
-
-# Build rule for subdir invocation for target.
-ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/thabet/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/thabet/catkin_ws/build/CMakeFiles 0
-.PHONY : ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule
-
-# Convenience name for target.
-ballpicker_xacro_generated_to_devel_space_: ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule
-
-.PHONY : ballpicker_xacro_generated_to_devel_space_
-
-# clean rule for target.
-ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/clean:
-	$(MAKE) -f ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build.make ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/clean
-.PHONY : ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

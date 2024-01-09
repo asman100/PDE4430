@@ -364,4 +364,3 @@
 /home/thabet/catkin_ws/build/ballpicker/CMakeFiles/rebuild_cache.dir
 /home/thabet/catkin_ws/build/ballpicker/CMakeFiles/edit_cache.dir
 /home/thabet/catkin_ws/build/ballpicker/CMakeFiles/test.dir
-/home/thabet/catkin_ws/build/ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir

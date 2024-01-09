@@ -13,549 +13,199 @@
   </link>
   <link
     name="Car_link">
-    <inertial>
-      <origin
-        xyz="0.0 0.0 0.00553332226051508"
-        rpy="1.5 0 0" />
-      <mass
-        value="5.0" />
-      <inertia
-        ixx="0.110749906707375"
-        ixy="-1.75365410957896E-07"
-        ixz="7.93049790205434E-09"
-        iyy="0.0835173634719432"
-        iyz="0.00145400864608235"
-        izz="0.0979369174058086" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Car_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Car_link.STL" />
-      </geometry>
-    </collision>
-  </link>
+ <visual>
+<origin xyz="0.070000000000000034417 -0.089000000000000092926 1.2845280394913071349e-16" rpy="4.9303806576313226891e-32 1.4432899320127035026e-15 1.5707963267948947816" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/car_link.stl"/>
+</geometry>
+<material name="car_link_material">
+<color rgba="0.79215686274509800047 0.81960784313725487671 0.93333333333333334814 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.070000000000000034417 -0.089000000000000092926 1.2845280394913071349e-16" rpy="4.9303806576313226891e-32 1.4432899320127035026e-15 1.5707963267948947816" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/car_link.stl"/>
+</geometry>
+</collision>
+<inertial>
+<origin xyz="-8.0792827294974415e-08 -0.00029399224686504910053 0.041690808771539626665" rpy="0 0 0"/>
+<mass value="1.4917848461152376505" />
+<inertia ixx="0.0054742713586083220287" ixy="1.5570169247996331444e-10"  ixz="1.0980481213835968122e-08" iyy="0.0040696032117884329074" iyz="-3.2559022251880480405e-06" izz="0.0056507774047397192271" />
+</inertial>
+</link>
   <joint name="base_to_car" type="fixed">
-    <origin xyz="0 -0.09 0" rpy="1.57 0 1.57"/>
+    <origin xyz="0 0.00 0" rpy="0 0 1.57"/>
     <parent link="base_footprint"/>
     <child link="Car_link"/>
   </joint>
   <link
     name="LF_Wheel">
-    <inertial>
-      <origin
-        xyz="-0.00153990775115265 4.84133740041859E-10 6.48850088241781E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276981348" />
-      <inertia
-        ixx="2.57858861550238E-05"
-        ixy="5.38669622852653E-14"
-        ixz="5.95956619934724E-14"
-        iyy="1.52375713168355E-05"
-        iyz="-2.31104481825362E-10"
-        izz="1.5236691208538E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LF_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LF_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
+ <visual>
+<origin xyz="0 0.030999981675389996771 -0.0056518448773737461899" rpy="2.1692574143828551494e-17 -1.570796326794896558 0" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/pr16_a01_tire_2.stl"/>
+</geometry>
+<material name="pr16_a01_tire_2_material">
+<color rgba="0.26274509803921569651 0.28235294117647058432 0.30196078431372547213 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0.030999981675389996771 -0.0056518448773737461899" rpy="2.1692574143828551494e-17 -1.570796326794896558 0" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/pr16_a01_tire_2.stl"/>
+</geometry>
+</collision>
+<visual>
+<origin xyz="0 0 -0.0062000000000100169428" rpy="3.141592653589793116 1.6264382251535596775e-32 2.1692574143828551494e-17" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/p30_isp_a001_3d.stl"/>
+</geometry>
+<material name="p30_isp_a001_3d_material">
+<color rgba="0.26274509803921569651 0.28235294117647058432 0.30196078431372547213 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 -0.0062000000000100169428" rpy="3.141592653589793116 1.6264382251535596775e-32 2.1692574143828551494e-17" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/p30_isp_a001_3d.stl"/>
+</geometry>
+</collision>
+<inertial>
+<origin xyz="-1.5487334166844589248e-06 -8.5814345018492923711e-08 -0.0050301561806493219273" rpy="0 0 0"/>
+<mass value="0.03207771713809098868" />
+<inertia ixx="1.2358596404452204434e-05" ixy="4.3615492917198882394e-10"  ixz="-1.667694698618963425e-11" iyy="1.2345010752383234556e-05" iyz="-5.7827554652492551165e-09" izz="2.2976553031712314832e-05" />
+</inertial>
+</link>
   <joint
     name="LF_Wheel_Cont"
     type="continuous">
-    <origin
-      xyz="0.21777 -0.029518 0.071531"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="LF_Wheel" />
-    <axis
-      xyz="1 0 0" />
-  </joint>
-  <!-- 
-  <link
-    name="LM_Wheel">
-    <inertial>
-      <origin
-        xyz="-0.00153990775115259 4.84133802491904E-10 6.48850057016759E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276981348" />
-      <inertia
-        ixx="2.57858861550239E-05"
-        ixy="5.38669741639358E-14"
-        ixz="5.9595642988137E-14"
-        iyy="1.52375713168356E-05"
-        iyz="-2.31104481826999E-10"
-        izz="1.5236691208538E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LM_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LM_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="LM_Wheel_Cont"
-    type="continuous">
-    <origin
-      xyz="0.21777 -0.029518 0.0015309"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="LM_Wheel" />
-    <axis
-      xyz="1 0 0" />
-    <mimic
-      joint="LF_Wheel_Cont"
-      multiplier="1"
-      offset="0" /> 
-  </joint>-->
-  <link
-    name="LB_Wheel">
-    <inertial>
-      <origin
-        xyz="-0.00153990775115259 4.84133726164071E-10 6.48849862727729E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276981345" />
-      <inertia
-        ixx="2.57858861550237E-05"
-        ixy="5.38669869547035E-14"
-        ixz="5.95956547741387E-14"
-        iyy="1.52375713168355E-05"
-        iyz="-2.3110448177996E-10"
-        izz="1.52366912085378E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LB_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/LB_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="LB_Wheel_Cont"
-    type="continuous">
-    <origin
-      xyz="0.21777 -0.029518 -0.068469"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="LB_Wheel" />
-    <axis
-      xyz="1 0 0" />
-    <mimic
-      joint="LF_Wheel_Cont"
-      multiplier="1"
-      offset="0" />
-  </joint>
-  <link
-    name="RF_Wheel">
-    <inertial>
-      <origin
-        xyz="0.00153990775115213 -6.83017375296968E-10 4.1886908525024E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276980535" />
-      <inertia
-        ixx="2.57858861550147E-05"
-        ixy="7.86864505417938E-14"
-        ixz="-3.65804412588572E-14"
-        iyy="1.52373068430096E-05"
-        iyz="4.65003743546124E-10"
-        izz="1.52369556823478E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RF_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RF_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
+<origin xyz="0.078500000000000166867 -0.034000000000000030198 0.02500000000000004996" rpy="-1.570796326794896558 1.4312143091539777373 1.5707963267948978903" />
+<parent link="Car_link" />
+<child link="LF_Wheel" />
+<axis xyz="0 0 -1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name = "RF_Wheel">
+<visual>
+<origin xyz="-8.6736173798840354721e-19 0 -0.006200000000010003065" rpy="3.141592653589793116 -2.2125674404552151571e-32 6.9186391990699090735e-17" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/p30_isp_a001_3d.stl"/>
+</geometry>
+<material name="p30_isp_a001_3d_material">
+<color rgba="0.26274509803921569651 0.28235294117647058432 0.30196078431372547213 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-8.6736173798840354721e-19 0 -0.006200000000010003065" rpy="3.141592653589793116 -2.2125674404552151571e-32 6.9186391990699090735e-17" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/p30_isp_a001_3d.stl"/>
+</geometry>
+</collision>
+<visual>
+<origin xyz="8.6736173798840354721e-19 0.03099998167539000718 -0.0056518448773737461899" rpy="6.9186391990699090735e-17 -1.570796326794896558 0" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/pr16_a01_tire_2.stl"/>
+</geometry>
+<material name="pr16_a01_tire_2_material">
+<color rgba="0.26274509803921569651 0.28235294117647058432 0.30196078431372547213 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="8.6736173798840354721e-19 0.03099998167539000718 -0.0056518448773737461899" rpy="6.9186391990699090735e-17 -1.570796326794896558 0" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/pr16_a01_tire_2.stl"/>
+</geometry>
+</collision>
+<inertial>
+<origin xyz="-1.5487334166835617052e-06 -8.5814345013680731015e-08 -0.0050301561806493149884" rpy="0 0 0"/>
+<mass value="0.03207771713809098868" />
+<inertia ixx="1.2358596404452204434e-05" ixy="4.361549291717472355e-10"  ixz="-1.6676946986154420913e-11" iyy="1.2345010752383234556e-05" iyz="-5.7827554652491599907e-09" izz="2.2976553031712314832e-05" />
+</inertial>
+</link>
+<joint
     name="RF_Wheel_Cont"
     type="continuous">
-    <origin
-      xyz="-0.03173 -0.029518 0.071531"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="RF_Wheel" />
-    <axis
-      xyz="1 0 0" />
-  </joint>
-  <!-- 
-  <link
-    name="RM_Wheel">
-    <inertial>
-      <origin
-        xyz="0.00153990775115211 -6.83017403052544E-10 4.18868884022316E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276980535" />
-      <inertia
-        ixx="2.57858861550147E-05"
-        ixy="7.86864660113413E-14"
-        ixz="-3.6580443692086E-14"
-        iyy="1.52373068430096E-05"
-        iyz="4.65003743631836E-10"
-        izz="1.52369556823478E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RM_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RM_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="RM_Wheel_Cont"
-    type="continuous">
-    <origin
-      xyz="-0.03173 -0.029518 0.0015309"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="RM_Wheel" />
-    <axis
-      xyz="1 0 0" />
-    <mimic
-      joint="RF_Wheel_Cont"
-      multiplier="1"
-      offset="0" />
-  </joint> -->
-  <link
-    name="RB_Wheel">
-    <inertial>
-      <origin
-        xyz="0.00153990775115216 -6.83017496727611E-10 4.18868828511165E-10"
-        rpy="0 0 0" />
-      <mass
-        value="0.0351748276980541" />
-      <inertia
-        ixx="2.57858861550151E-05"
-        ixy="7.8686446012487E-14"
-        ixz="-3.65804272639864E-14"
-        iyy="1.52373068430098E-05"
-        iyz="4.65003743568956E-10"
-        izz="1.52369556823481E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RB_Wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/RB_Wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="RB_Wheel_Cont"
-    type="continuous">
-    <origin
-      xyz="-0.03173 -0.029518 -0.068469"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="RB_Wheel" />
-    <axis
-      xyz="1 0 0" />
-    <mimic
-      joint="RF_Wheel_Cont"
-      multiplier="1"
-      offset="0" />
-  </joint>
-  <gazebo reference="RB_Wheel">
-            <mu1>1.0</mu1>
-            <mu2>0.5</mu2>
-            <kp>10000000.0</kp>
-            <kd>10.0</kd>
-            <fdir1>0 0.0 1.0</fdir1>
-          <dynamics damping="0.7" friction="100.0" />  
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-            
-  </gazebo>
-  <gazebo reference="RF_Wheel">
-            <mu1>1.0</mu1>
-            <mu2>0.5</mu2>
-            <kp>10000000.0</kp>
-            <kd>10.0</kd>
-            <fdir1>0 0.0 1.0</fdir1>
-          <dynamics damping="0.7" friction="10.0" />
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-            
-  </gazebo>
-  <gazebo reference="LB_Wheel">
-            <mu1>1.0</mu1>
-            <mu2>0.5</mu2>
-            <kp>10000000.0</kp>
-            <kd>10.0</kd>
-            <fdir1>0 0.0 1.0</fdir1>
-          <dynamics damping="0.7" friction="100.0" />  
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-            
-  </gazebo>
-  <gazebo reference="LF_Wheel">
-            <mu1>1.0</mu1>
-            <mu2>0.5</mu2>
-            <kp>10000000.0</kp>
-            <kd>10.0</kd>
-            <fdir1>0 0.0 1.0</fdir1>
-          <dynamics damping="0.7" friction="100.0" /> 
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-            
-  </gazebo>
+<origin xyz="-0.078500000000000291767 -0.034000000000000044076 0.02500000000000004996" rpy="-1.570796326794896558 1.0543435529566484998 -1.57079632679489678" />
+<parent link="Car_link" />
+<child link="RF_Wheel" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
   <link
     name="Claw_Right">
-    <inertial>
-      <origin
-        xyz="-0.127197064731162 -0.0158052215751697 0.179817108241744"
-        rpy="0 0 0" />
-      <mass
-        value="0.234822404065573" />
-      <inertia
-        ixx="0.00376947183179376"
-        ixy="8.23160335735902E-06"
-        ixz="-6.43273841267378E-05"
-        iyy="0.00439057756261837"
-        iyz="-1.2742343183228E-05"
-        izz="0.000787891659954531" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Claw_Right.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Claw_Right.STL" />
-      </geometry>
-    </collision>
-  </link>
+<visual>
+<origin xyz="0.0074999999999999988551 -0.17749999999999999112 0.023500000000000000056" rpy="3.141592653589793116 -5.4838385157121393167e-32 1.0514097037387974864e-18" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/right_claw.stl"/>
+</geometry>
+<material name="right_claw_material">
+<color rgba="0.50196078431372548323 0.50196078431372548323 0.50196078431372548323 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.0074999999999999988551 -0.17749999999999999112 0.023500000000000000056" rpy="3.141592653589793116 -5.4838385157121393167e-32 1.0514097037387974864e-18" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/right_claw.stl"/>
+</geometry>
+</collision>
+<inertial>
+<origin xyz="0.13161031125667496666 -0.15634229581481434712 0.0087073712694376460136" rpy="0 0 0"/>
+<mass value="0.077433187135449055294" />
+<inertia ixx="0.0010380342021609899501" ixy="0.00015302945284854561035"  ixz="1.8999232012475426259e-06" iyy="0.00018632777059713365002" iyz="-2.5063978661754547605e-06" izz="0.0012127555084622649532" />
+</inertial>
+</link>
   <joint
     name="Claw_Right_J"
     type="revolute">
-    <origin
-      xyz="0.08952 -0.015018 0.17203"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="Claw_Right" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      lower="-3.14"
-      upper="3.14"
-      effort="1000"
-      velocity="1" />
-  </joint>
+<origin xyz="-0.0050000000000001952605 -0.10400000000000012013 0.047500000000000167089" rpy="-3.1415926535897926719 -5.9913170964877163588e-16 3.128025583921072883" />
+<parent link="Car_link" />
+<child link="Claw_Right" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
   <link
     name="Claw_Left">
-    <inertial>
-      <origin
-        xyz="0.114626073328396 -0.0158052215751698 0.188080166434317"
-        rpy="0 0 0" />
-      <mass
-        value="0.234822404065573" />
-      <inertia
-        ixx="0.00374681789269306"
-        ixy="-7.34261156340594E-06"
-        ixz="0.000266775836666619"
-        iyy="0.0043905775626186"
-        iyz="-1.32745116317314E-05"
-        izz="0.000810545599055451" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Claw_Left.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ballpicker/meshes/Claw_Left.STL" />
-      </geometry>
-    </collision>
-  </link>
+<visual>
+<origin xyz="0.032499999999999994171 -0.17749999999999999112 0.023500000000000000056" rpy="-3.141592653589793116 1.0720342654554461735e-32 9.3875871167830618372e-18" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/left_claw.stl"/>
+</geometry>
+<material name="left_claw_material">
+<color rgba="0.50196078431372548323 0.50196078431372548323 0.50196078431372548323 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.032499999999999994171 -0.17749999999999999112 0.023500000000000000056" rpy="-3.141592653589793116 1.0720342654554461735e-32 9.3875871167830618372e-18" />
+<geometry>
+<mesh filename="package://ballpicker/meshes2/left_claw.stl"/>
+</geometry>
+</collision>
+<inertial>
+<origin xyz="-0.13161031125667541075 -0.15634229581481351445 0.0087073712694376321358" rpy="0 0 0"/>
+<mass value="0.077433187135448430793" />
+<inertia ixx="0.0010380342021609784576" ixy="-0.00015302945284854956769"  ixz="-1.8999232012475358497e-06" iyy="0.00018632777059713099372" iyz="-2.5063978661752133561e-06" izz="0.0012127555084622506417" />
+</inertial>
+</link>
   <joint
     name="Claw_Left_J"
     type="revolute">
-    <origin
-      xyz="0.09652 -0.015018 0.17203"
-      rpy="0 0 0" />
-    <parent
-      link="Car_link" />
-    <child
-      link="Claw_Left" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      lower="-3.14"
-      upper="3.14"
-      effort="1000"
-      velocity="1" />
-  </joint>
+<origin xyz="0.0049999999999998240297 -0.10400000000000014788 0.050000000000000169309" rpy="3.141592653589793116 -3.9580907866572562926e-16 3.0015673980571331292" />
+<parent link="Car_link" />
+<child link="Claw_Left" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
 
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 0 1" />
-    <origin xyz="0.1 0.01 0" rpy="-1.57 0 0"/>
+    <origin xyz="0 0.0 0.15" rpy="0 0 0"/>
     <parent link="Car_link"/>
     <child link="hokuyo_link"/>
   </joint>
@@ -617,23 +267,23 @@
       </plugin>
     </sensor>
   </gazebo>
-
   <gazebo>
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
       <updateRate>100.0</updateRate>
       <robotNamespace>/</robotNamespace>
       <leftFrontJoint>LF_Wheel_Cont</leftFrontJoint>
       <rightFrontJoint>RF_Wheel_Cont</rightFrontJoint>
-      <leftRearJoint>LB_Wheel_Cont</leftRearJoint>
-      <rightRearJoint>RB_Wheel_Cont</rightRearJoint>
+      <leftRearJoint>LF_Wheel_Cont</leftRearJoint>
+      <rightRearJoint>RF_Wheel_Cont</rightRearJoint>
       <wheelSeparation>0.210</wheelSeparation>
       <wheelDiameter>0.065</wheelDiameter>
       <robotBaseFrame>base_link</robotBaseFrame>
-      <torque>40</torque>
+      <torque>10</torque>
       <topicName>cmd_vel</topicName>
       <broadcastTF>true</broadcastTF>
     </plugin>
   </gazebo> 
+ 
   <transmission name="link_1_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="Claw_Left_J">
@@ -664,16 +314,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-    <transmission name="link_4_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LB_Wheel_Cont">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="link_4_motor">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+
     <transmission name="link_5_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="RF_Wheel_Cont">
@@ -683,17 +324,40 @@
     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
-    <transmission name="link_6_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="RB_Wheel_Cont">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="link_6_motor">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> 
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+ </transmission>  
+ <!--
+ <link name="frictionless_sphere">
+		<inertial>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<mass value="1.0"/>
+		<inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+		</inertial>
+		<visual>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			 <sphere radius="0.008"/>
+		</geometry>
+		<material name="white"/>
+		</visual>
+		<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+		 <sphere radius="0.008"/>
+		</geometry>
+		
+		<gazebo reference="frictionless_sphere">
+			<material>Gazebo/White</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+		</gazebo>
+		</collision>
+  	</link>
+	  <joint name="sphere_joint" type="fixed">
+    <origin xyz="0 0.06 0" rpy="0 0 0"/>
+    <parent link="Car_link"/>
+    <child link="frictionless_sphere"/>
+  </joint> 
+  -->
   <gazebo>
     <plugin name="control"
   filename="libgazebo_ros_control.so">

@@ -167,21 +167,6 @@ depend:
 	cd /home/thabet/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule:
-	cd /home/thabet/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule
-.PHONY : ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule
-
-# Convenience name for target.
-ballpicker_xacro_generated_to_devel_space_: ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/rule
-
-.PHONY : ballpicker_xacro_generated_to_devel_space_
-
-# fast build rule for target.
-ballpicker_xacro_generated_to_devel_space_/fast:
-	cd /home/thabet/catkin_ws/build && $(MAKE) -f ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build.make ballpicker/CMakeFiles/ballpicker_xacro_generated_to_devel_space_.dir/build
-.PHONY : ballpicker_xacro_generated_to_devel_space_/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -195,7 +180,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... ballpicker_xacro_generated_to_devel_space_"
 .PHONY : help
 
 
