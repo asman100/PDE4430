@@ -9,20 +9,23 @@ import sensor_msgs.point_cloud2 as pc2
 import rospy
 import tf2_ros
 import tf2_geometry_msgs
-from geometry_msgs.msg import PointStamped, Point
+from geometry_msgs.msg import PointStamped, Point, Pose
 from std_msgs.msg import Header
 import tf2_msgs.msg
 
 
+def pat(patpub):
+    rate = rospy.Rate(1)
+    while not rospy.is_shutdown():
+        pose = Pose()
+        pose.position.x = 0.0
+        pose.position.y = 1000.0
+
+        patpub.publish(pose)
+        rate.sleep()
+
+
 def transform_point(point_3d, from_frame, to_frame, tf_buffer):
-    """
-    Transform a point from one frame to another frame.
-    :param point_3d: The point in the 'from_frame'.
-    :param from_frame: The frame in which 'point_3d' is currently.
-    :param to_frame: The frame to which you want to transform 'point_3d'.
-    :param tf_buffer: The tf2 buffer object used for looking up transformations.
-    :return: Transformed point in the 'to_frame'.
-    """
     try:
         now = rospy.Time.now()
         tf_buffer.can_transform(to_frame, from_frame, now, rospy.Duration(1.0))
@@ -142,7 +145,8 @@ def main():
     rgb_sub = message_filters.Subscriber("/kinnect/color/image_raw", Image)
     depth_sub = message_filters.Subscriber("/kinnect/depth/image_raw", Image)
     pc_sub = message_filters.Subscriber("/kinnect/depth/points", PointCloud2)
-
+    patrol_publisher = rospy.Publisher("patrol", Pose, queue_size=10)
+    pat(patrol_publisher)
     ts = message_filters.ApproximateTimeSynchronizer(
         [rgb_sub, depth_sub, pc_sub], 10, 0.1
     )
